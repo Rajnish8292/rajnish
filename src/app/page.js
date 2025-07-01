@@ -1,95 +1,65 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+import HorizontalScroll from "@/component/HorizontalScroll/HorizontalScroll";
+import MainNav from "@/component/MainNav/MainNav";
+import ImageArray from "@/component/ImageArray/ImageArray";
+import SkillSection from "@/component/SkillSection/SkillSection";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+import ProjectSection from "@/component/ProjectSection/ProjectSection";
+import FooterSection from "@/component/FooterSection/FooterSection";
+export default function page() {
+  const intro_ref = useRef()
+  const intro_section_ref = useRef()
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+  useGSAP(() => {
+    if(!intro_ref.current || !intro_section_ref.current) return;
+    gsap.registerPlugin(ScrollTrigger)    
+
+    gsap.from(intro_ref.current, {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: intro_section_ref.current,
+        start: 'top center',
+        end: 'top top',
+        scrub: true,
+      }
+    })
+
+  })
+  return (<>
+    <MainNav />
+
+    <section className="hero_section" id="home">
+      <div className="text_back">
+        <HorizontalScroll font_size={'var(--font-size-giant)'}/>
+      </div>
+
+      <div className="showcase_box_wrapper">
+        <div className="showcase">
+          <ImageArray time={2} />
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+        <div className="text_front">
+          <HorizontalScroll font_size={'var(--font-size-giant)'} />
+        </div>
+      </div>
+    </section>
+
+
+    <section className="intro_section" ref={intro_section_ref}>
+      <div className="section_title">(01) INTRODUCTION</div>
+      <div className="introduction_paragraph" ref={intro_ref}>
+        <div>Rajnish is a passionate Front-end Developer,</div>
+        <div>And Problem Solver. Experienced in building Modern, Scalable,   </div>
+        <div>and futuristic website that can help to engage visitors.</div>
+      </div>
+    </section>
+
+    <SkillSection />
+    <ProjectSection />
+    <FooterSection />
+    
+  </>)
 }

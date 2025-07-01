@@ -1,0 +1,46 @@
+.footer {
+    height: 80vh;
+    background-color: var(--color-shade1);
+    color: var(--color-shade5);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.name_container {
+    white-space: nowrap;
+}
+.small_text {
+    width: 98vw;
+    /* background-color: red; */
+    font-size: var(--font-size-small);
+    text-align: right;
+    
+}
+.big_text {
+    width: 100vw;
+    font-size: var(--font-size-veryLarge);
+    font-family: "NeueMontreal-bold";
+    /* background-color: green; */
+    line-height: 0.7;
+}
+
+.contact_container {
+    /* background-color: red; */
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background: var(--color-shade5);
+     color: var(--color-shade1);
+    .text {
+       
+        font-family: "NeueMontreal-regular";
+        font-size: var(--font-size-giant);
+        cursor: pointer;
+        text-align: center;
+        padding: 7px 0;width: 30vw;
+    }
+}
