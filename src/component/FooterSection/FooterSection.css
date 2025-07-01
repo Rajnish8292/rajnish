@@ -44,3 +44,18 @@
         padding: 7px 0;width: 30vw;
     }
 }
+.message {
+    width: 20vw;
+    font-size: var(--font-size-large);
+     font-family: "NeueMontreal-regular";
+     position: fixed;
+    padding: 10px;
+    text-align: center;
+     z-index: 97;
+     background-color: var(--color-shade5);
+     color: var(--color-shade1);
+     top : 30px;
+     left:50%;
+     transform: translate(-50%, 0);
+
+}

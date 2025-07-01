@@ -17,6 +17,9 @@ export default function ProjectSection() {
         if(elem) projects_arr.current.push(elem)
 
     }
+    const openLink = useCallback((link) => {
+        window.open(link, "_blank")
+    })
 
     const handle_mouse_enter = useCallback((e) => {
         e.preventDefault();
@@ -31,17 +34,17 @@ export default function ProjectSection() {
                 scale: 1,
             })
         }
-        if(e.target.children[1]) {
+        if(e.currentTarget.children[1]) {
             // background animation logic
             if(y <= height/2) {
-            console.log({target: e.target})
-            gsap.to(e.target.children[1].children[0], {
+            console.log({target: e.currentTarget})
+            gsap.to(e.currentTarget.children[1].children[0], {
                 y: 0,
                 duration: animation_duration,
                 ease: ease_type,
             })
         } else {
-            gsap.to(e.target.children[1].children[1], {
+            gsap.to(e.currentTarget.children[1].children[1], {
                 y: 0,
                 duration: animation_duration,
                 ease: ease_type,
@@ -84,13 +87,13 @@ export default function ProjectSection() {
                 }
             })
         }
-        if(e.target.children[1]) {
-            gsap.to(e.target.children[1].children[0], {
+        if(e.currentTarget.children[1]) {
+            gsap.to(e.currentTarget.children[1].children[0], {
                 y: "-100%",
                 duration: animation_duration,
                 ease: ease_type,
             })
-            gsap.to(e.target.children[1].children[1], {
+            gsap.to(e.currentTarget.children[1].children[1], {
                 y: '100%',
                 duration: animation_duration,
                 ease: ease_type,
@@ -115,7 +118,7 @@ export default function ProjectSection() {
     return (<section style={{height:'100vh', width:'100vw'}} id="project">
       <div className="section_title">(03) PROJECTS</div>
     <div className="project_container">
-        <div ref={projects_ref} className="project" style={{borderTop:"2px solid var(--color-shade5)"}}>
+        <div ref={projects_ref} className="project" style={{borderTop:"2px solid var(--color-shade5)"}} onClick={() => openLink('https://github.com/Rajnish8292/dining_table_configurator')}>
             <div className="project_wrapper">DINING TABLE CONFIGURATOR</div>
             <div  className="bg_wrapper">
                 <div className="top_slide"></div>
@@ -129,7 +132,7 @@ export default function ProjectSection() {
             {/* <div>Arrow</div>
             <div>Image</div> */}
         </div>
-        <div ref={projects_ref} className="project">
+        <div ref={projects_ref} className="project" onClick={() => openLink('https://github.com/Rajnish8292/mustang')}>
             <div className="project_wrapper">MUSTANG SHOWCASE WEBSITE</div>
             <div  className="bg_wrapper">
                 <div className="top_slide"></div>
@@ -141,7 +144,7 @@ export default function ProjectSection() {
             {/* <div>Arrow</div>
             <div>Image</div> */}
         </div>
-        <div ref={projects_ref} className="project">
+        <div ref={projects_ref} className="project" onClick={() => openLink('https://github.com/Rajnish8292/search_algorithm_visulazier')}>
             <div className="project_wrapper">GRAPH ALGORITHM VISUALIZER</div>
             <div  className="bg_wrapper">
                 <div className="top_slide"></div>
@@ -153,7 +156,7 @@ export default function ProjectSection() {
             {/* <div>Arrow</div>
             <div>Image</div> */}
         </div>
-        <div ref={projects_ref} className="project">
+        <div ref={projects_ref} className="project" onClick={() => openLink('https://github.com/Rajnish8292/bloggingWebsite')}>
             <div className="project_wrapper">BLOGGING WEBSITE</div>
             <div  className="bg_wrapper">
                 <div className="top_slide"></div>
@@ -166,7 +169,7 @@ export default function ProjectSection() {
             <div>Image</div> */}
         </div>
         
-        <div ref={projects_ref} className="project">
+        <div ref={projects_ref} className="project" onClick={() => openLink('https://github.com/Rajnish8292/Brain-tumor-model')}>
             <div className="project_wrapper">BRAIN TUMOR CLASSIFIER</div>
             <div  className="bg_wrapper">
                 <div className="top_slide"></div>

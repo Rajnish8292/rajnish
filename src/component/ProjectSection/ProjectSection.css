@@ -5,7 +5,6 @@
     border-bottom: 2px solid var(--color-shade5);
     cursor: pointer;
     padding: 25px 0;
-    font-size: var(--font-size-large);
     text-align: center;
     font-family: 'NeueMontreal-bold';
     position: relative;
@@ -20,6 +19,20 @@
 
 .project_wrapper {
     z-index: 1;
+    width: calc(100vw - 120px);
+    height: 100%;
+            font-size: var(--font-size-large);
+
+    /* background-color: green; */
+    padding: 0 60px;
+    /* background-color: green; */
+    text-align: center;
+
+}
+.project:hover {
+    .tag {
+        opacity:1;
+    }
 }
 .bg_wrapper {
     position: absolute;
