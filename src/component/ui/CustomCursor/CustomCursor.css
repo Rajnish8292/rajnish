@@ -1,8 +1,16 @@
 .custom_cursor {
-    height: 50px;
-    width: 50px;
+    height: 20px;
+    width: 20px;
     background-color: var(--color-shade5);
     border-radius: 100%;
+    opacity: 0.7;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.custom_cursor_container {
+    height: 20px;
+    width: 20px;
     position: fixed;
     top:0;
     left: 0;
@@ -11,4 +19,5 @@
     left :  calc((50px/2) * -1 );
     pointer-events: none;
     mix-blend-mode:multiply;
+    /* transition: 1s linear; */
 }

@@ -1,65 +1,56 @@
-'use client'
+"use client";
 
-import HorizontalScroll from "@/component/HorizontalScroll/HorizontalScroll";
-import MainNav from "@/component/MainNav/MainNav";
-import ImageArray from "@/component/ImageArray/ImageArray";
-import SkillSection from "@/component/SkillSection/SkillSection";
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
-import ProjectSection from "@/component/ProjectSection/ProjectSection";
-import FooterSection from "@/component/FooterSection/FooterSection";
+import HorizontalScroll from "@/component/ui/HorizontalScroll/HorizontalScroll";
+import MainNav from "@/component/ui/MainNav/MainNav";
+import ImageArray from "@/component/ui/ImageArray/ImageArray";
+import SkillSection from "@/component/section/SkillSection/SkillSection";
+import ProjectSection from "@/component/section/ProjectSection/ProjectSection";
+import FooterSection from "@/component/section/FooterSection/FooterSection";
+import HeroSectionReplica from "@/component/replica/HeroSectionReplica/HeroSectionReplica";
+import IntroductionSection from "@/component/section/IntroductionSection/IntroductionSection";
+import IntroductionSectionReplica from "@/component/replica/IntroductionSectionReplica/IntroductionSectionReplica";
+import WorkSection from "@/component/section/WorkSection/WorkSection";
+
 export default function page() {
-  const intro_ref = useRef()
-  const intro_section_ref = useRef()
+  return (
+    <>
+      <MainNav />
+      <div className="section_wrapper">
+        <section className="hero_section" id="home">
+          <div className="text_back">
+            <HorizontalScroll font_size={"var(--font-size-giant)"} />
+          </div>
 
-  useGSAP(() => {
-    if(!intro_ref.current || !intro_section_ref.current) return;
-    gsap.registerPlugin(ScrollTrigger)    
-
-    gsap.from(intro_ref.current, {
-      opacity: 0,
-      scrollTrigger: {
-        trigger: intro_section_ref.current,
-        start: 'top center',
-        end: 'top top',
-        scrub: true,
-      }
-    })
-
-  })
-  return (<>
-    <MainNav />
-
-    <section className="hero_section" id="home">
-      <div className="text_back">
-        <HorizontalScroll font_size={'var(--font-size-giant)'}/>
+          <div className="showcase_box_wrapper">
+            <div className="showcase">
+              <ImageArray time={2} />
+            </div>
+            <div className="text_front">
+              <HorizontalScroll font_size={"var(--font-size-giant)"} />
+            </div>
+          </div>
+        </section>
+        <HeroSectionReplica />
+      </div>
+      <div className="section_wrapper">
+        <IntroductionSection />
+        <IntroductionSectionReplica />
+      </div>
+      <div className="section_wrapper">
+        <SkillSection />
       </div>
 
-      <div className="showcase_box_wrapper">
-        <div className="showcase">
-          <ImageArray time={2} />
-        </div>
-        <div className="text_front">
-          <HorizontalScroll font_size={'var(--font-size-giant)'} />
-        </div>
+      <div className="section_wrapper">
+        <WorkSection />
       </div>
-    </section>
 
-
-    <section className="intro_section" ref={intro_section_ref}>
-      <div className="section_title">(01) INTRODUCTION</div>
-      <div className="introduction_paragraph" ref={intro_ref}>
-        <div>Rajnish is a passionate Front-end Developer,</div>
-        <div>And Problem Solver. Experienced in building Modern, Scalable,   </div>
-        <div>and futuristic website that can help to engage visitors.</div>
+      <div className="section_wrapper" style={{ marginTop: "50px" }}>
+        <ProjectSection />
       </div>
-    </section>
 
-    <SkillSection />
-    <ProjectSection />
-    <FooterSection />
-    
-  </>)
+      <div className="section_wrapper">
+        <FooterSection />
+      </div>
+    </>
+  );
 }

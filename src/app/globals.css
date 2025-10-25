@@ -4,10 +4,10 @@
   --color-shade3: #8C8C8C;
   --color-shade4: #595959;
   --color-shade5: #262626;
-  --font-size-regular: 1.5vw;
-  --font-size-small: 1.2vw;
-  --font-size-large: 1.8vw;
-  --font-size-giant: 3vw;
+  --font-size-regular: 18px;
+  --font-size-small: 12px;
+  --font-size-large: 24px;
+  --font-size-giant: 32px;
   --font-size-veryLarge: 15.6vw;
 }
 
@@ -78,9 +78,9 @@ body {
   height: 400px;
   width: 400px;
   /* position: absolute; */
-  img {
+  /* img {
     filter: grayscale(100%);
-  }
+  } */
 
 }
 
@@ -91,28 +91,15 @@ body {
   white-space: nowrap;
   transform: translate(0, -25px);
 }
-
-.intro_section {
-  width: 100vw;
-  /* height: calc(100vh - 15vh); */
-  padding-top: 15vh;
-  padding-bottom: 15vh;
-  /* padding-bottom: 15vh; */
-
-}
-
 .section_title {
   padding-left: 40px;
   font-family: 'oranienbaum';
   font-size: var(--font-size-regular);
 }
 
-.introduction_paragraph {
-  font-family: 'NeueMontreal-bold';
-  font-size: var(--font-size-giant);
-  padding: 40px;
-  width: calc(100vw - 80px);
-  display: flex;
-  flex-direction: column;
-  align-items: end;
+
+.section_wrapper {
+  width: 100vw;
+  height: auto;
+  position: relative;
 }

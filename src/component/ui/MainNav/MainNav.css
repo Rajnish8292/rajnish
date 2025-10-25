@@ -20,5 +20,9 @@ nav {
 .link {
     width: 150px;
     text-align: center;
+    transition: 250ms ease-in-out;
 }
 
+.link:hover {
+    color: white;
+}
