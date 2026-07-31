@@ -59,3 +59,19 @@
      transform: translate(-50%, 0);
 
 }
+
+@media (max-width : 500px) {
+    .contact_container {
+        /* background-color: red; */
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        flex-direction: column;
+            .text {
+       
+        width: auto;
+    }
+    }
+}

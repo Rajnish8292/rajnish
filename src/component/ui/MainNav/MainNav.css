@@ -26,3 +26,11 @@ nav {
 .link:hover {
     color: white;
 }
+
+
+@media (max-width : 500px) {
+    .links {
+        display: none;
+    }
+
+}

@@ -5,10 +5,11 @@ import { useParams } from "next/navigation";
 import styles from "./page.module.css"
 import { FaArrowLeft } from "react-icons/fa6";
 import { PROJECTS } from "@/app/portfolio_data";
-import { style } from "framer-motion/client";
 import FooterSection from "@/component/section/FooterSection/FooterSection";
 import { GoArrowUpRight } from "react-icons/go";
 import { FaGithub } from "react-icons/fa";
+
+
 export default function Page() {
     const params = useParams()
     const project_title = params?.title ?? "home";

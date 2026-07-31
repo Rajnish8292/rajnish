@@ -16,6 +16,7 @@
   align-items: center;
   justify-content: space-around;
   width: 100vw;
+  min-width: 1100px;
   flex-shrink: 0;
 }
 
@@ -26,4 +27,14 @@
   100% {
     transform: translateX(-100vw);
   }
+}
+
+@media (max-width : 500px) {
+  .slide_track {
+    display: flex;
+    width: max-content;
+    animation: marquee 10s linear infinite;
+  }
+
+
 }

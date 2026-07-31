@@ -89,3 +89,10 @@
         /* border: 1px solid green; */
     }
 }
+
+
+@media (max-width : 500px) {
+    .skills_section {
+        display: none;
+    }
+}

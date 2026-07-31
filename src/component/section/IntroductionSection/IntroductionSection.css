@@ -18,3 +18,12 @@
   flex-direction: column;
   align-items: end;
 }
+
+@media (max-width : 500px) {
+  .introduction_paragraph {
+    font-family: 'NeueMontreal-bold';
+    font-size: var(--font-size-large);
+    padding: 10px;
+    width: calc(100vw - 20px);
+  }
+}

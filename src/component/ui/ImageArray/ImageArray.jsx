@@ -4,6 +4,8 @@ import image1 from '@/assets/image1.jpg';
 import image2 from '@/assets/image2.jpg';
 import image3 from '@/assets/image3.jpg';
 import { useEffect, useRef } from 'react';
+
+
 export default function ImageArray({ time }) {
   const ref = useRef([]);
 
@@ -16,7 +18,6 @@ export default function ImageArray({ time }) {
 
   if (image_arr.length !== 3 || image_arr.some((el) => !el)) return;
 
-  // Wait until all images are fully loaded
   const imagesLoaded = image_arr.map((img) => {
     return new Promise((resolve) => {
       if (img.complete) resolve();
