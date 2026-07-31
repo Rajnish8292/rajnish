@@ -12,12 +12,12 @@
     "@gsap/react": "^2.1.2",
     "@studio-freight/lenis": "^1.0.42",
     "@studio-freight/react-lenis": "^0.0.47",
-    "framer-motion": "^12.20.1",
+    "framer-motion": "^12.43.0",
     "gsap": "^3.13.0",
     "next": "14.2.23",
     "react": "^18",
     "react-dom": "^18",
-    "react-icons": "^5.5.0",
+    "react-icons": "^5.7.0",
     "sharp": "^0.34.2"
   }
 }

@@ -3,90 +3,100 @@ import { useCallback, useEffect, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import { useMainContext } from "@/component/context/MainContextProvider";
 
 export default function IntroductionSectionReplica() {
-  const intro_ref = useRef();
-  const intro_section_ref = useRef();
 
-  // store viewport cursor position (clientX/clientY)
-  const cursor_position = useRef({
-    clientX: window.innerWidth * 0.8,
-    clientY: window.innerHeight / 2,
-  });
+  const { cursorRadius, setCursorRadius, cursorPos, cursorRadiusRef  } = useMainContext()
 
-  // helper to apply clipPath using element-local coords
-  const applyClip = useCallback((clientX, clientY) => {
-    const el = intro_section_ref.current;
-    if (!el) return;
-
-    const rect = el.getBoundingClientRect();
-    // element-local coords
-    const localX = clientX - rect.left;
-    const localY = clientY - rect.top;
-
-    // distance check (use viewport coords for distance)
-    const distance = Math.hypot(
-      clientX - window.innerWidth * 0.8,
-      clientY - window.innerHeight / 2
-    );
-    const radius = distance < 300 ? 150 : 50;
-
-    gsap.to(el, {
-      clipPath: `circle(${radius}px at ${Math.round(localX)}px ${Math.round(
-        localY
-      )}px)`,
-      duration: 0.5,
-      ease: "power2.out",
-    });
-  }, []);
-
-  const handleMouseMove = useCallback(
-    (e) => {
-      // store viewport coords
-      cursor_position.current = { clientX: e.clientX, clientY: e.clientY };
-      applyClip(e.clientX, e.clientY);
-    },
-    [applyClip]
-  );
-
-  const handleWindowScroll = useCallback(() => {
-    // on scroll, recalc local coords from stored viewport coords
-    const { clientX, clientY } = cursor_position.current;
-    applyClip(clientX, clientY);
-  }, [applyClip]);
-
+  const maskRef = useRef();
+  const triggerRef = useRef(null);
+  const cursor_position = useRef({ x: 0, y: 0 });
+  
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("scroll", handleWindowScroll, { passive: true });
+    if(!triggerRef.current) return;
 
-    // set initial clip so it's visible on load
-    applyClip(cursor_position.current.clientX, cursor_position.current.clientY);
+    const mouseenterHandler = () => {
+
+      gsap.to(cursorRadiusRef.current, {
+          value : 150,
+          duration: 0.5, 
+          ease: "power2.out",
+          onUpdate : () => {setCursorRadius({value : cursorRadiusRef.current.value})}
+      })
+
+    }
+
+    const mouseleaveHandler = () => {
+      gsap.to(cursorRadiusRef.current, {
+          value : 50,
+          duration: 0.5, 
+          ease: "power2.out",
+          onUpdate : () => {setCursorRadius({value : cursorRadiusRef.current.value})}
+      })
+    }
+
+    triggerRef.current.addEventListener("mouseenter", mouseenterHandler);
+    triggerRef.current.addEventListener("mouseleave", mouseleaveHandler);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("scroll", handleWindowScroll);
-    };
-  }, [handleMouseMove, handleWindowScroll, applyClip]);
+        triggerRef.current.removeEventListener("mouseenter", mouseenterHandler);
+        triggerRef.current.removeEventListener("mouseleave", mouseleaveHandler);
+    }
 
-  useGSAP(() => {
-    if (!intro_ref.current || !intro_section_ref.current) return;
-    gsap.from(intro_ref.current, {
-      opacity: 0,
-      y: 50,
-      scrollTrigger: {
-        trigger: intro_section_ref.current,
-        start: "top center",
-        end: "top top",
-        scrub: true,
-      },
+  }, [])
+
+
+
+  useEffect(() => {
+    if (!maskRef.current) return;
+
+    const updateClipPath = () => {
+      const rect = maskRef.current.getBoundingClientRect();
+      const xPos = cursorPos.x - rect.left;
+      const yPos = cursorPos.y - rect.top;
+
+      cursor_position.current = { x: xPos, y: yPos };
+
+      maskRef.current.style.clipPath = `circle(${cursorRadius.value}px at ${xPos}px ${yPos}px)`;
+    };
+
+    updateClipPath();
+
+    window.addEventListener("scroll", updateClipPath, { passive: true });
+
+    return () => window.removeEventListener("scroll", updateClipPath);
+  }, [cursorPos, cursorRadius]);
+
+  useEffect(() => {
+    if (!maskRef.current) return;
+
+    const rect = maskRef.current.getBoundingClientRect();
+
+    const xPos = cursorPos.x - rect.left;
+    const yPos = cursorPos.y - rect.top;
+
+    cursor_position.current = { x: xPos, y: yPos };
+
+    gsap.to(maskRef.current, {
+      clipPath: `circle(${cursorRadius.value}px at ${xPos}px ${yPos}px)`,
+      duration: 0.5,
+      ease: "power2.out",
+      overwrite: "auto", // important, see below
     });
-  });
+  }, [cursorPos, cursorRadius]);
+
+
+
+
 
   return (
-    <section className="intro_section_replica" ref={intro_section_ref}>
+    <section className="intro_section_replica" ref={maskRef}>
+
+      <div ref={triggerRef} style={{height : "100%", width : "40%", position : "absolute", right : 0, top : 0, zIndex: 1, background:"transparent"}}></div>
+
       <div className="section_title">(01) INTRODUCTION</div>
-      <div className="introduction_paragraph" ref={intro_ref}>
+      <div className="introduction_paragraph">
         <div>
           <span>Rajnish</span> is a passionate{" "}
           <span style={{ fontFamily: "oranienbaum" }}>Front-end Developer</span>

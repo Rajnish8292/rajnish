@@ -1,0 +1,74 @@
+.project_page {
+    margin-top: 100px;
+    padding: 40px;
+    position: relative;
+}
+
+.project_container {
+    margin-top: 50px;
+    position: relative;
+}
+
+.video_container {
+    width: 100%;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detail_container {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.project_title {
+    font-size: 5rem;
+}
+
+.project_description  {
+    font-size: 1.5rem;
+    font-family: "oranienbaum";
+    margin-top: 20px;
+}
+
+.project_stack {
+    font-family: "oranienbaum";
+    font-weight: bold;
+}
+.category_capsule {
+    border-radius: 60px;
+    background-color: var(--color-shade5);
+    color: var(--color-shade1);
+    padding: 7.5px 20px ;
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+}
+
+.link_container {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+}
+.link_button {
+    border-radius: 60px;
+    padding: 8px 20px;
+    width: 250px;
+    border: 1px solid var(--color-shade5);
+    text-align: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7.5px;
+}
+
+.link_button_github {
+    background: var(--color-shade5) !important;
+    color: var(--color-shade1) !important;
+}

@@ -6,6 +6,7 @@ import LoadingPage from "@/component/page/LoadingPage/LoadingPage";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import CustomCursor from "@/component/ui/CustomCursor/CustomCursor";
+import { MainContextProvider } from "@/component/context/MainContextProvider";
 
 export default function RootLayout({ children }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,15 +21,21 @@ export default function RootLayout({ children }) {
         {isLoading && <LoadingPage />}
         {/* <NoiseWrapper /> */}
         {/* <CustomCursor /> */}
+
         {!isLoading && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <SmoothScroll>{children}</SmoothScroll>
+            <SmoothScroll>
+
+              <MainContextProvider>{children}</MainContextProvider>
+            
+            </SmoothScroll>
           </motion.div>
         )}
+
       </body>
     </html>
   );

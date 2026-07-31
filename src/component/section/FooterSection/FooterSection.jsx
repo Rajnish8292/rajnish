@@ -60,8 +60,7 @@ export default function FooterSection() {
         </div>
         <div className="name_container">
           <div className="small_text">
-            Final year at{" "}
-            <span style={{ fontWeight: "bold" }}>NIT Mizoram</span> :)
+            Design & Developed By
           </div>
           <div className="big_text">RAJNISH RAJ</div>
         </div>

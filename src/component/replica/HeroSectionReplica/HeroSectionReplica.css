@@ -12,9 +12,8 @@
     border: none;
     outline: none;
     box-shadow: none;
-     background-clip: padding-box;
-     overflow: hidden;
-     will-change: transform;
-     z-index: 1;
-    
+    background-clip: padding-box;
+    overflow: hidden;
+    will-change: transform;
+    z-index: 1;    
 }

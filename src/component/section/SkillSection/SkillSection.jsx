@@ -3,7 +3,7 @@ import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from 'gsap';
 import './SkillSection.css'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 
 export default function SkillSection() {
@@ -14,6 +14,9 @@ export default function SkillSection() {
     const count_slider_ref = useRef()
     const title_slider_ref = useRef()
     const paragraph_ref = useRef()
+    const count_ref = useRef()
+
+    const [toggleMode, setToggleMode] = useState("light");
 
     
 
@@ -29,6 +32,8 @@ export default function SkillSection() {
                 end: 'bottom top',
                 pin :true,
                 scrub: true,
+                onanimationstart : () => {setToggleMode("dark")},
+                onanimationend: () => {setToggleMode("light")}
             }
         })
 
@@ -46,6 +51,10 @@ export default function SkillSection() {
         .to([...paragraph_ref.current.children].map((elem) => elem.children[0]), {
             y: 0,
             duration: 0.1
+        }, '<')
+        .to(count_ref.current, {
+            background: "#262626",
+            color: "white"
         }, '<')
 
         .to(count_slider_ref.current, {
@@ -86,15 +95,21 @@ export default function SkillSection() {
       <div className="section_title">(02) SKILLS</div>
       <div className="skill_wrapper">
         <div className="skill_count">
-          <div className="count_number">0</div>
-          <div className="count_number">
-          <div ref={count_slider_ref} className="slide_wrapper">
-            <div className="count_slide">#</div>
-            <div className="count_slide">1</div>
-            <div className="count_slide">2</div>
-            <div className="count_slide">3</div>
-          </div>
+        <div ref={count_ref} style={{
+            display: "flex",
+            padding: "50px"
+        }}>
+            <div className="count_number">0</div>
+            <div className="count_number">
+                <div ref={count_slider_ref} className="slide_wrapper">
+                    <div className="count_slide">#</div>
+                    <div className="count_slide">1</div>
+                    <div className="count_slide">2</div>
+                    <div className="count_slide">3</div>
+                </div>
 
+            </div>
+         
           </div>
         </div>
         <div className="skill_description">

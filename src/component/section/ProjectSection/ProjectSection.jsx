@@ -7,6 +7,7 @@ import project4 from "@/assets/projects/4.png";
 import project5 from "@/assets/projects/5.png";
 import gsap from "gsap";
 import { useCallback, useEffect, useRef } from "react";
+import { GoArrowUpRight } from "react-icons/go";
 
 export default function ProjectSection() {
   const projects_arr = useRef([]);
@@ -188,9 +189,9 @@ export default function ProjectSection() {
         <div
           ref={projects_ref}
           className="project"
-          onClick={() => openLink("https://github.com/Rajnish8292/dask")}
+          onClick={() => {window.location.href = "/portfolio/landing_page"}}
         >
-          <div className="project_wrapper">DASK</div>
+          <div className="project_wrapper">View All Project <GoArrowUpRight /></div>
           <div className="bg_wrapper">
             <div className="top_slide"></div>
             <div className="bottom_slide"></div>

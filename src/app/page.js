@@ -15,7 +15,9 @@ export default function page() {
   return (
     <>
       <MainNav />
+
       <div className="section_wrapper">
+
         <section className="hero_section" id="home">
           <div className="text_back">
             <HorizontalScroll font_size={"var(--font-size-giant)"} />
@@ -30,12 +32,19 @@ export default function page() {
             </div>
           </div>
         </section>
+
+
         <HeroSectionReplica />
+
+
       </div>
+
+
       <div className="section_wrapper">
         <IntroductionSection />
         <IntroductionSectionReplica />
       </div>
+
       <div className="section_wrapper">
         <SkillSection />
       </div>
@@ -51,6 +60,7 @@ export default function page() {
       <div className="section_wrapper">
         <FooterSection />
       </div>
+      
     </>
   );
 }
