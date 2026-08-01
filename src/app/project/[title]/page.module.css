@@ -11,6 +11,14 @@
         padding: 10px;
         position: relative;
     }
+    .project_title {
+    font-size: 3rem !important;
+}
+
+.detail_container {
+    margin-top: 30px !important;
+}
+
 
 }
 

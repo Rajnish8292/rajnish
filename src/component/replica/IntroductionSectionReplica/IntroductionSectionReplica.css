@@ -12,3 +12,10 @@
   clip-path: circle(50px at 0% 0%);
 
 }
+
+
+@media (max-width : 500px) {
+    .intro_section_replica {
+        clip-path: circle(0px at 0% 0%);
+    }
+}

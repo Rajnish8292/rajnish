@@ -37,8 +37,18 @@ export default function Page() {
                     <div className={styles.link_container}>
                         <div className={styles.link_button} 
                             onClick={() => {window.location.href = project_detail.url}}
+                            style={{
+                                opacity: (!project_detail.url) ? "0.5" : "1",
+                                cursor: (!project_detail.url) ? "not-allowed" : "pointer"
+                            }}
                         >Live Demo <GoArrowUpRight /></div>
-                        <div className={[styles.link_button, styles.link_button_github].join(" ")}><FaGithub /> Github</div>
+                        <div className={[styles.link_button, styles.link_button_github].join(" ")}
+                            onClick={() => {window.location.href = project_detail.github}}
+                            style={{
+                                opacity: (!project_detail.github) ? "0.5" : "1",
+                                cursor: (!project_detail.github) ? "not-allowed" : "pointer"
+                            }}
+                        ><FaGithub /> Github</div>
                     </div>
                 </div>
              </div>
