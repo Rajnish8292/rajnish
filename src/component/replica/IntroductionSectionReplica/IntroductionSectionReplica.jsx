@@ -17,7 +17,7 @@ export default function IntroductionSectionReplica() {
     if(!triggerRef.current) return;
 
     const mouseenterHandler = () => {
-
+      if(window.innerWidth < 500) return;
       gsap.to(cursorRadiusRef.current, {
           value : 150,
           duration: 0.5, 
@@ -28,6 +28,7 @@ export default function IntroductionSectionReplica() {
     }
 
     const mouseleaveHandler = () => {
+      if(window.innerWidth < 500) return;
       gsap.to(cursorRadiusRef.current, {
           value : 50,
           duration: 0.5, 
@@ -50,6 +51,7 @@ export default function IntroductionSectionReplica() {
 
   useEffect(() => {
     if (!maskRef.current) return;
+    if(window.innerWidth < 500) return;
 
     const updateClipPath = () => {
       const rect = maskRef.current.getBoundingClientRect();
@@ -70,6 +72,7 @@ export default function IntroductionSectionReplica() {
 
   useEffect(() => {
     if (!maskRef.current) return;
+    if(window.innerWidth < 500) return;
 
     const rect = maskRef.current.getBoundingClientRect();
 

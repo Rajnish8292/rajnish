@@ -79,3 +79,10 @@
     /* filter: grayscale(50) */
 }
 
+@media (max-width : 500px) {
+    .project_wrapper {
+
+        font-size: var(--font-size-regular);
+
+    }
+}

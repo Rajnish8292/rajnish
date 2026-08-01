@@ -16,7 +16,7 @@ export default function HeroSectionReplica() {
     if(!triggerRef.current) return;
 
     const mouseenterHandler = () => {
-
+      if(window.innerWidth < 500) return;
       gsap.to(cursorRadiusRef.current, {
           value : 150,
           duration: 0.5, 
@@ -27,6 +27,7 @@ export default function HeroSectionReplica() {
     }
 
     const mouseleaveHandler = () => {
+      if(window.innerWidth < 500) return;
       gsap.to(cursorRadiusRef.current, {
           value : 50,
           duration: 0.5, 
@@ -49,7 +50,7 @@ export default function HeroSectionReplica() {
 
   useEffect(() => {
     if (!maskRef.current) return;
-
+    if(window.innerWidth < 500) return;
     const updateClipPath = () => {
       const rect = maskRef.current.getBoundingClientRect();
       const xPos = cursorPos.x - rect.left;
@@ -72,6 +73,7 @@ export default function HeroSectionReplica() {
 
   useEffect(() => {
     if (!maskRef.current) return;
+    if(window.innerWidth < 500) return;
 
     const rect = maskRef.current.getBoundingClientRect();
 

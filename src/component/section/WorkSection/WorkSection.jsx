@@ -6,6 +6,7 @@ import Image from "next/image";
 import musicblock_logo from "@/assets/musicblock_logo.png";
 import algolia_logo from "@/assets/algolia_logo.png";
 import fiverr_logo from "@/assets/fiverr_logo.png";
+import miraigate_logo from "@/assets/miraigate.jpg"
 
 import bg from "@/assets/bg.png";
 export default function WorkSection() {
@@ -13,6 +14,55 @@ export default function WorkSection() {
     <section>
       <div className="section_title">(03) Work</div>
       <div className="work_container">
+
+
+                <div className="miraigate">
+          <div className="work_heading">Frontend Developer Intern (Igaming)</div>
+          <div className="freelance_work work_box">
+            <div className="work_detail">
+              <div className="work_avatar">
+                <Image
+                  src={miraigate_logo.src}
+                  height={50}
+                  width={50}
+                  alt="freelancer photo"
+                />
+              </div>
+
+              <div className="work_info">
+                <div className="work_title">Miraigate technologies</div>
+                <div className="work_role">
+                  Frontend Developer Intern<span className="dot"></span>Remote
+                </div>
+              </div>
+            </div>
+
+            <div className="work_description">
+              Shipped 8 production casino games, including Crash, Aviator, Roulette, and a 3D Russian Roulette game, using React, Phaser, Three.js, and WebSockets. Integrated Rive and Spine animations, synchronized REST and WebSocket data with automatic reconnection handling, and optimized rendering through Three.js performance techniques, texture compression, and React memoization to consistently deliver smooth 60 FPS gameplay across desktop and mobile devices.
+            </div>
+            <div className="tech_stack">
+              <span style={{ fontWeight: "bold" }}>Tech Stack :</span>{" "}
+              <span
+                style={{
+                  fontFamily: "oranienbaum",
+                  color: "var(--color-shade4)",
+                }}
+              >
+                HTML5, CSS3, JavaScript, TypeScript WebSocket, TailwindCSS, Rive, Spine, Phaser, HTML Canvas
+              </span>
+            </div>
+
+            <div className="remark">
+              <div className="remark_card">
+                <div className="remark_title">Internship Duration</div>
+                <div className="remark_container">
+                  6 month
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         <div className="freelance_work_container">
           <div className="work_heading">Freelance</div>
           <div className="freelance_work work_box">
