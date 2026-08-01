@@ -27,7 +27,7 @@ export default function Page() {
 
              <div className={styles.project_container}>
                 <div className={styles.video_container}>
-                    <video src={project_detail.video} width={"100%"} autoPlay></video>
+                    <video src={project_detail.video} width={"100%"} autoPlay controls></video>
                 </div>
                 <div className={styles.detail_container}>
                     <div className={styles.category_capsule}>{project_detail.category}</div>
